@@ -13,7 +13,6 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-
     private EditText txtGuess;
     private Button btnGuess;
     private TextView lblOutput;
