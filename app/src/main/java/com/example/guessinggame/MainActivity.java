@@ -18,19 +18,24 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGuess;
     private TextView lblOutput;
 
-    private int theNumber;
+    private int theNumber, tryCount;
 
     public void checkGuess() {
         String guessText = txtGuess.getText().toString();
         String message = "";
 	    try {
-	        int guess = Integer.parseInt(guessText);
-            if (guess < theNumber)
+            int guess = Integer.parseInt(guessText);
+            if (guess < theNumber) {
                 message = guess + " is too low. Try again.";
-            else if (guess > theNumber)
+                tryCount++;
+            }
+            else if (guess > theNumber){
                 message = guess + " is too high. Try again.";
+                tryCount++;
+            }
             else {
-                message = guess + " is correct. You win! Let's play again!"; newGame();
+                message = guess + " is correct. You win! Let's play again! Number of tries: " + tryCount;
+                newGame();
             }
 	    } catch (Exception e) {
             message = "Enter a whole number between 1 and 100.";
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newGame() {
+        tryCount = 0;
         theNumber = (int) (Math.random() * 100 + 1);
     }
 
